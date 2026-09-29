@@ -1,0 +1,173 @@
+/* ============================================
+   SECTION TITLE — All Black (text + lines)
+   Font: Kaushan Script (already loaded)
+   ============================================ */
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 3em 0;
+  text-align: center;
+  font-family: 'Share Tech Mono', 'Montserrat', monospace;
+}
+
+/* ---- Subtitle (black, no outline) ---- */
+.section-title .section-title__subtitle {
+  margin: 0 0 0.3em 0;
+  padding: 0 2em;
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-size: 1.5em;
+  color: #000000;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+/* ---- Row: line + title + line ---- */
+.section-title .section-title__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 2em;
+}
+
+/* ---- Lines (now solid black, no glow) ---- */
+.section-title .section-title__line {
+  flex: 1 1 auto;
+  height: 2px;
+  background: #000000;
+  box-shadow: none;
+  position: relative;
+}
+
+.section-title .section-title__line:last-of-type {
+  background: #000000;
+}
+
+/* Diamond accents — also black now */
+.section-title .section-title__line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  background: #000000;
+  border: 1px solid #000000;
+  transform: translateY(-50%) rotate(45deg);
+  box-shadow: none;
+}
+
+.section-title .section-title__line:first-of-type::after {
+  right: -3px;
+}
+
+.section-title .section-title__line:last-of-type::after {
+  left: -3px;
+  background: #000000;
+  border-color: #000000;
+  box-shadow: none;
+}
+
+/* ============================================
+   MAIN TITLE — Solid black, no outline, no glow
+   ============================================ */
+.section-title .section-title__text {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 0.5em;
+
+  /* Handwriting font */
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-size: 3.2em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-style: normal;
+
+  /* Solid black, no outline, no glow */
+  color: #000000;
+  line-height: 1.2;
+  white-space: nowrap;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media only screen and (max-width: 1440px) {
+  .section-title .section-title__text {
+    font-size: 2.9em;
+  }
+  .section-title .section-title__row {
+    gap: 1.6em;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .section-title {
+    padding: 2.5em 0;
+  }
+  .section-title .section-title__text {
+    font-size: 2.4em;
+  }
+  .section-title .section-title__subtitle {
+    font-size: 1.35em;
+  }
+  .section-title .section-title__row {
+    gap: 1.3em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .section-title {
+    padding: 2em 0;
+  }
+  .section-title .section-title__text {
+    font-size: 2em;
+  }
+  .section-title .section-title__subtitle {
+    font-size: 1.2em;
+  }
+  .section-title .section-title__row {
+    gap: 1em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .section-title {
+    padding: 1.6em 0;
+  }
+  .section-title .section-title__text {
+    font-size: 1.55em;
+    padding: 0 0.4em;
+  }
+  .section-title .section-title__subtitle {
+    font-size: 1.05em;
+    padding: 0 1em;
+  }
+  .section-title .section-title__row {
+    gap: 0.6em;
+  }
+  .section-title .section-title__line::after {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .section-title .section-title__text {
+    font-size: 1.3em;
+  }
+  .section-title .section-title__subtitle {
+    font-size: 0.95em;
+  }
+  .section-title .section-title__row {
+    gap: 0.5em;
+  }
+}
