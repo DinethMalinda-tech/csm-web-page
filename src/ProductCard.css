@@ -6,7 +6,7 @@
 .product-card {
     background: white;
     width: 100%;
-    max-width: 900px;
+    max-width: 900px;               /* ✅ unchanged on desktop */
     max-height: 90vh;
     border-radius: 28px;
 
@@ -92,17 +92,14 @@
 }
 
 .product-description {
+    font-family: 'Orbitron', system-ui, sans-serif;
     font-size: 1rem;
+    font-weight: 700;
     line-height: 1.55;
     color: #1e2b3c;
-    font-weight: 450;
     letter-spacing: -0.01em;
     flex-shrink: 0;
     margin: 0;
-    font-family: 'Orbitron', system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-
 }
 
 /* ---------- feature lists (scrollable) ---------- */
@@ -166,7 +163,7 @@
     list-style: none;
 }
 
-.feature-group>li {
+.feature-group > li {
     font-weight: 600;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -207,13 +204,13 @@
 }
 
 /* divider between consecutive feature groups */
-.feature-lists .feature-group+.feature-group {
+.feature-lists .feature-group + .feature-group {
     border-top: 1px solid #e5eaf1;
     padding-top: 1rem;
 }
 
 /* ---------- special group: red title, blue items ---------- */
-.feature-group--special>li {
+.feature-group--special > li {
     color: #e53935;
     /* 🔴 red title */
 }
@@ -350,7 +347,7 @@
 
 @media (min-width: 1000px) {
     .product-card {
-        max-width: 1000px;
+        max-width: 1000px;          /* ✅ back to original */
         padding: 2rem 2.5rem 2.2rem;
     }
 
@@ -378,6 +375,10 @@
 
     .product-image {
         border-radius: 18px;
+        width: 70%;                 /* 🔻 30% smaller — phone only */
+        max-width: 220px;           /* 🔻 cap */
+        margin: 0 auto;             /* 🔻 center */
+        aspect-ratio: 1 / 0.95;     /* 🔻 keep shape */
     }
 
     .feature-lists {
@@ -395,6 +396,8 @@
     }
 
     .product-description {
+        font-family: 'Orbitron', system-ui, sans-serif;
+        font-weight: 700;
         font-size: 0.95rem;
     }
 }
