@@ -1,6 +1,10 @@
 import "./Header.css"
 
 function Header() {
+  const phoneNumber = "94755110269"; // Sri Lanka country code + number
+  const message = encodeURIComponent("I would like to buy CSM");
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+
   return (
     <>
       <header id="navbar" className="main-header">
@@ -24,7 +28,13 @@ function Header() {
             <h2>Affordable software to manage your class</h2>
             <div className="hero-line"></div>
             <div className="hero-cta">
-              <a href="#contact">Contact Us</a>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Us
+              </a>
             </div>
           </div>
         </div>
