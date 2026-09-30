@@ -2,7 +2,7 @@ import "./Header.css"
 import { buildWhatsAppLink } from "./utils/whatsapp"
 
 function Header() {
-  const whatsappLink = buildWhatsAppLink("I would like to buy CSM");
+  const whatsappLink = buildWhatsAppLink("I would like to Know about CSM Packages");
 
   return (
     <>
