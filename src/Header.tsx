@@ -1,9 +1,8 @@
 import "./Header.css"
+import { buildWhatsAppLink } from "./utils/whatsapp"
 
 function Header() {
-  const phoneNumber = "94755110269"; // Sri Lanka country code + number
-  const message = encodeURIComponent("I would like to buy CSM");
-  const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+  const whatsappLink = buildWhatsAppLink("I would like to buy CSM");
 
   return (
     <>

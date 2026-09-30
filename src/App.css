@@ -1,0 +1,27 @@
+/* ---------- page wrapper: centers everything ---------- */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #f5f7fb;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ensure the card keeps its own max width on desktop */
+.app-wrapper > * {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* ---------- optional: make page take full height ---------- */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}

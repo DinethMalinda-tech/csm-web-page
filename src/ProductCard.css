@@ -1,0 +1,400 @@
+/* ============================================
+   ProductCard component styles
+   ============================================ */
+
+/* ---------- main card ---------- */
+.product-card {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    border-radius: 28px;
+
+    box-shadow:
+        0 1px 2px rgba(16, 24, 40, 0.04),
+        0 4px 8px rgba(16, 24, 40, 0.04),
+        0 12px 24px rgba(16, 24, 40, 0.06),
+        0 32px 64px rgba(16, 24, 40, 0.08);
+
+    padding: 1.8rem 2rem 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 2px 4px rgba(16, 24, 40, 0.04),
+        0 8px 16px rgba(16, 24, 40, 0.06),
+        0 20px 40px rgba(16, 24, 40, 0.1),
+        0 48px 80px rgba(16, 24, 40, 0.12);
+}
+
+/* ---------- layout wrapper ---------- */
+.card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ---------- image ---------- */
+.product-image {
+    width: 100%;
+    background: #f0f3f9;
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    box-shadow:
+        0 2px 4px rgba(16, 24, 40, 0.04),
+        0 8px 20px rgba(16, 24, 40, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    box-shadow:
+        0 4px 8px rgba(16, 24, 40, 0.06),
+        0 16px 32px rgba(16, 24, 40, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.03);
+}
+
+/* ---------- content column ---------- */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.product-description {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #1e2b3c;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+    margin: 0;
+    font-family: 'Orbitron', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+
+}
+
+/* ---------- feature lists (scrollable) ---------- */
+.feature-lists {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #fafcff;
+    padding: 1rem 1.2rem;
+    border-radius: 18px;
+    border: 1px solid #eef2f8;
+
+    box-shadow:
+        inset 0 2px 6px rgba(16, 24, 40, 0.04),
+        0 1px 2px rgba(16, 24, 40, 0.02);
+
+    overflow-y: auto;
+    max-height: 260px;
+    min-height: 0;
+
+    scrollbar-width: thin;
+    scrollbar-color: #c8d4e3 transparent;
+
+    mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%);
+
+    transition: box-shadow 0.3s ease;
+}
+
+.feature-lists:hover {
+    box-shadow:
+        inset 0 2px 6px rgba(16, 24, 40, 0.05),
+        0 4px 12px rgba(94, 224, 255, 0.1);
+}
+
+.feature-lists::-webkit-scrollbar {
+    width: 6px;
+}
+
+.feature-lists::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.feature-lists::-webkit-scrollbar-thumb {
+    background: #c8d4e3;
+    border-radius: 10px;
+}
+
+.feature-lists::-webkit-scrollbar-thumb:hover {
+    background: #a8bcd1;
+}
+
+/* ---------- individual feature groups ---------- */
+.feature-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.feature-group li {
+    list-style: none;
+}
+
+.feature-group>li {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #1e2b3c;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.feature-group ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.feature-group ul li {
+    font-size: 0.9rem;
+    color: #4a5a6e;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-weight: 450;
+}
+
+.feature-group ul li::before {
+    content: '▹';
+    color: #5ee0ff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
+    opacity: 0.9;
+    flex-shrink: 0;
+    text-shadow: 0 0 8px rgba(94, 224, 255, 0.5);
+}
+
+/* divider between consecutive feature groups */
+.feature-lists .feature-group+.feature-group {
+    border-top: 1px solid #e5eaf1;
+    padding-top: 1rem;
+}
+
+/* ---------- special group: red title, blue items ---------- */
+.feature-group--special>li {
+    color: #e53935;
+    /* 🔴 red title */
+}
+
+.feature-group--special ul li {
+    color: #0a3799;
+    /* 🔵 blue items */
+}
+
+.feature-group--special ul li::before {
+    color: #1e88e5;
+    /* 🔵 blue bullet */
+    text-shadow: 0 0 8px rgba(30, 136, 229, 0.5);
+}
+
+/* ---------- action buttons ---------- */
+.actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    padding-top: 1rem;
+    background: white;
+    border-top: 1px solid #f0f3f8;
+    box-shadow: 0 -8px 16px -8px rgba(16, 24, 40, 0.06);
+    margin-top: -0.2rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.9rem 1.4rem;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    background: #5ee0ff;
+    color: #0b1e33;
+
+    box-shadow:
+        0 2px 4px rgba(94, 224, 255, 0.3),
+        0 6px 14px rgba(94, 224, 255, 0.35),
+        0 12px 24px rgba(94, 224, 255, 0.15);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn:hover {
+    background: #4ac9f0;
+    transform: scale(1.02) translateY(-3px);
+    box-shadow:
+        0 4px 8px rgba(94, 224, 255, 0.4),
+        0 12px 24px rgba(94, 224, 255, 0.5),
+        0 24px 40px rgba(94, 224, 255, 0.25);
+}
+
+.btn:active {
+    transform: scale(0.97) translateY(0);
+    box-shadow:
+        0 1px 2px rgba(94, 224, 255, 0.3),
+        0 3px 8px rgba(94, 224, 255, 0.35),
+        inset 0 2px 4px rgba(11, 30, 51, 0.1);
+    transition: all 0.05s ease;
+}
+
+.btn-demo::before {
+    content: '▶';
+    font-size: 0.85rem;
+    opacity: 0.9;
+    transition: transform 0.2s ease;
+}
+
+.btn-demo:hover::before {
+    transform: translateX(3px);
+}
+
+/* ---------- responsive: tablet & desktop ---------- */
+@media (min-width: 700px) {
+    .card-main {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .product-image {
+        width: 44%;
+        max-width: 280px;
+        aspect-ratio: 1 / 0.95;
+        align-self: flex-start;
+    }
+
+    .card-content {
+        justify-content: flex-start;
+    }
+
+    .feature-lists {
+        max-height: 220px;
+    }
+
+    .product-description {
+        font-size: 1.05rem;
+    }
+
+    .btn {
+        padding: 1rem 1.6rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .product-card {
+        max-width: 1000px;
+        padding: 2rem 2.5rem 2.2rem;
+    }
+
+    .product-image {
+        max-width: 320px;
+        width: 42%;
+    }
+
+    .card-main {
+        gap: 2.5rem;
+    }
+
+    .feature-lists {
+        max-height: 240px;
+    }
+}
+
+/* ---------- responsive: mobile ---------- */
+@media (max-width: 480px) {
+    .product-card {
+        padding: 1.2rem 1.2rem 1.6rem;
+        border-radius: 22px;
+        max-height: 92vh;
+    }
+
+    .product-image {
+        border-radius: 18px;
+    }
+
+    .feature-lists {
+        max-height: 200px;
+        padding: 0.8rem 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .btn-demo::before {
+        font-size: 0.75rem;
+    }
+
+    .product-description {
+        font-size: 0.95rem;
+    }
+}
