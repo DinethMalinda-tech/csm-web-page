@@ -5,6 +5,7 @@ import ProductCard from './ProductCard'
 import type { FeatureGroup } from './ProductCard'
 import CsmSlider from './CsmSlider'
 import Footer from './Footer'
+import Loader from './Loader'
 import { openWhatsApp } from "./utils/whatsapp"
 
 const csmlite: FeatureGroup[] = [
@@ -81,6 +82,7 @@ const csmNotify: FeatureGroup[] = [
 function App() {
   return (
     <div>
+      <Loader/>
       <Header />
       <SectionTitle title="About" />
       <CsmSlider />
