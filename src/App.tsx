@@ -3,6 +3,7 @@ import Header from './Header'
 import SectionTitle from './SectionTitle'
 import ProductCard from './ProductCard'
 import type { FeatureGroup } from './ProductCard'
+import CsmSlider from './CsmSlider'
 import { openWhatsApp } from "./utils/whatsapp"
 
 const csmlite: FeatureGroup[] = [
@@ -31,11 +32,11 @@ const csm: FeatureGroup[] = [
   },
   {
     title: 'Exam Management Features',
-    items: ['Mark Entry & Recording','Student Ranking','Average & Grade Calculation','Combined Class Averages'],
+    items: ['Mark Entry & Recording', 'Student Ranking', 'Average & Grade Calculation', 'Combined Class Averages'],
   },
   {
     title: 'Assignment Management Features',
-    items: ['Assignment Recording','Assignment Completion Reports'],
+    items: ['Assignment Recording', 'Assignment Completion Reports'],
   },
   {
     title: 'Technical Features',
@@ -56,15 +57,15 @@ const csmNotify: FeatureGroup[] = [
   },
   {
     title: 'Parent Notifications',
-    items: ['SMS Alerts on Attendance','Real-Time Parent Updates'],
+    items: ['SMS Alerts on Attendance', 'Real-Time Parent Updates'],
   },
   {
     title: 'Exam Management Features',
-    items: ['Mark Entry & Recording','Student Ranking','Average & Grade Calculation','Combined Class Averages'],
+    items: ['Mark Entry & Recording', 'Student Ranking', 'Average & Grade Calculation', 'Combined Class Averages'],
   },
   {
     title: 'Assignment Management Features',
-    items: ['Assignment Recording','Assignment Completion Reports'],
+    items: ['Assignment Recording', 'Assignment Completion Reports'],
   },
   {
     title: 'Technical Features',
@@ -80,6 +81,8 @@ function App() {
   return (
     <div>
       <Header />
+      <SectionTitle title="About" />
+      <CsmSlider />
       <SectionTitle title="Our Packages" />
       <center>
         <ProductCard
@@ -96,7 +99,7 @@ function App() {
           imageAlt="CSM preview"
           description="Classroom Student Manager (Rs. 30,000)"
           featureGroups={csm}
-          specialTitles={['Exam Management Features','Assignment Management Features']}
+          specialTitles={['Exam Management Features', 'Assignment Management Features']}
           onBuy={() => openWhatsApp("I would like to buy CSM")}
           onDemo={() => console.log('Demo clicked')}
         />

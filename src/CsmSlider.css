@@ -1,0 +1,208 @@
+/* ---------- INTRO TEXT ---------- */
+.csm-intro {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 20px 32px;
+  text-align: center;
+}
+
+.csm-intro p {
+  font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  letter-spacing: 0.2px;
+  margin: 0 0 14px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+
+  background: linear-gradient(
+    135deg,
+    rgba(30, 40, 70, 1) 0%,
+    rgba(50, 40, 90, 1) 45%,
+    rgba(70, 45, 105, 1) 75%,
+    rgba(90, 50, 110, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.csm-tagline {
+  font-family: "Orbitron", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: #fff2eb;
+  color: #ff6b35;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* ---------- SLIDER WRAPPER ---------- */
+.csm-slider-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px 64px;
+}
+
+.csm-slider-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(90, 50, 110, 0.25),
+    0 10px 30px rgba(30, 40, 70, 0.35),
+    0 0 40px rgba(90, 50, 110, 0.2);
+  transition: transform 0.25s ease;
+}
+
+.csm-slider-frame:hover {
+  transform: translateY(-2px);
+}
+
+/* Gradient border ring */
+.csm-slider-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 3px;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 40, 70, 0.9) 0%,
+    rgba(50, 40, 90, 0.82) 45%,
+    rgba(70, 45, 105, 0.78) 75%,
+    rgba(90, 50, 110, 0.72) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.csm-swiper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.csm-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.csm-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---------- PAGINATION ---------- */
+.csm-swiper .swiper-pagination {
+  bottom: 10px !important;
+  z-index: 6;
+}
+
+.csm-swiper .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.6;
+}
+
+.csm-swiper .swiper-pagination-bullet-active {
+  background: linear-gradient(
+    135deg,
+    rgba(70, 45, 105, 1) 0%,
+    rgba(90, 50, 110, 1) 100%
+  );
+  opacity: 1;
+}
+
+/* ---------- FULLSCREEN HINT ---------- */
+.csm-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(30, 40, 70, 0.75) 0%,
+    rgba(90, 50, 110, 0.65) 100%
+  );
+  color: #fff;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.csm-slider-frame:hover .csm-hint {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.csm-hint i {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .csm-hint {
+    font-size: 0.65rem;
+    padding: 5px 9px;
+    bottom: 8px;
+    right: 8px;
+  }
+}
+
+/* ---------- FULLSCREEN STATE ---------- */
+.csm-slider-frame:fullscreen,
+.csm-slider-frame:-webkit-full-screen {
+  border-radius: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  transform: none;
+}
+
+.csm-slider-frame:fullscreen:hover,
+.csm-slider-frame:-webkit-full-screen:hover {
+  transform: none;
+}
+
+.csm-slider-frame:fullscreen::before,
+.csm-slider-frame:-webkit-full-screen::before {
+  display: none;
+}
+
+.csm-slider-frame:fullscreen .csm-swiper,
+.csm-slider-frame:-webkit-full-screen .csm-swiper {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.csm-slider-frame:fullscreen .csm-hint,
+.csm-slider-frame:-webkit-full-screen .csm-hint {
+  display: none;
+}
