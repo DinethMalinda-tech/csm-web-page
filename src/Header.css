@@ -195,6 +195,19 @@ body {
   justify-content: center;
   position: relative;
   text-align: center;
+
+  /* ---- reveal — hidden initial state ---- */
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-content--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================
@@ -209,31 +222,25 @@ body {
   z-index: 0;
 
   background-image:
-    /* soft inner radial glow */
     radial-gradient(ellipse 50% 50% at 50% 50%,
       rgba(94, 224, 255, 0.45) 0%,
       rgba(94, 224, 255, 0.08) 60%,
       transparent 100%),
-    /* top edge */
     linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
-    /* bottom edge */
     linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
-    /* left edge */
     linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
-    /* right edge */
     linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
-    /* base grid — nearly invisible */
     linear-gradient(rgba(94, 224, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 109, 177, 0.05) 1px, transparent 1px);
 
   background-size:
-    60px 60px,   /* glow */
-    60px 2px,    /* top edge — 2px thick */
-    60px 2px,    /* bottom edge */
-    2px 60px,    /* left edge */
-    2px 60px,    /* right edge */
-    60px 60px,   /* base grid H */
-    60px 60px;   /* base grid V */
+    60px 60px,
+    60px 2px,
+    60px 2px,
+    2px 60px,
+    2px 60px,
+    60px 60px,
+    60px 60px;
 
   background-repeat:
     no-repeat,
@@ -275,13 +282,37 @@ body {
   100%  { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 0;   }
 }
 
-/* ---- keep content above grid ---- */
+/* ============================================
+   HERO CHILDREN — staggered reveal
+   NOTE: must come AFTER .hero-content::before
+   ============================================ */
 .hero-content > * {
   position: relative;
   z-index: 2;
+
+  /* hidden initial state */
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---- typography ---- */
+.hero-content--visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* per-element stagger */
+.hero-content--visible > h2:first-of-type { transition-delay: 0.15s; }
+.hero-content--visible > h1               { transition-delay: 0.30s; }
+.hero-content--visible > h1 + h2          { transition-delay: 0.45s; }
+.hero-content--visible > .hero-line       { transition-delay: 0.60s; }
+.hero-content--visible > .hero-cta        { transition-delay: 0.75s; }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
 .hero-content h2 {
   padding-bottom: 0.4em;
   font-family: 'Kaushan Script', cursive;
@@ -317,7 +348,9 @@ body {
   max-width: 30em;
 }
 
-/* ---- decorative line ---- */
+/* ============================================
+   DECORATIVE LINE
+   ============================================ */
 .hero-line {
   display: block;
   width: 6em;
@@ -342,7 +375,9 @@ body {
   box-shadow: 0 0 6px rgba(94, 224, 255, 0.5);
 }
 
-/* ---- CTA button ---- */
+/* ============================================
+   CTA BUTTON
+   ============================================ */
 .hero-cta a {
   display: inline-block;
   padding: 0.9em 2.4em;
@@ -497,4 +532,16 @@ body {
   .hero-content h1 { font-size: 1.5em; }
   .hero-content h2 { font-size: 1em; }
   .hero-content h1 + h2 { font-size: 0.68em; }
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-content > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

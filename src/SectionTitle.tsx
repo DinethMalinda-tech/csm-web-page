@@ -1,5 +1,5 @@
-import React from 'react';
-import './SectionTitle.css';
+import { useEffect, useRef, useState } from "react";
+import "./SectionTitle.css";
 
 interface SectionTitleProps {
   /** Main title text (usually the big uppercase heading) */
@@ -15,11 +15,44 @@ interface SectionTitleProps {
 const SectionTitle: React.FC<SectionTitleProps> = ({
   title,
   subtitle,
-  className = '',
+  className = "",
   id,
 }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    // Fallback for old browsers
+    if (!("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={`section-title ${className}`.trim()} id={id}>
+    <div
+      ref={ref}
+      className={`section-title ${className} ${
+        isVisible ? "section-title--visible" : ""
+      }`.trim()}
+      id={id}
+    >
       {subtitle && <h3 className="section-title__subtitle">{subtitle}</h3>}
 
       <div className="section-title__row">

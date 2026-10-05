@@ -1,5 +1,6 @@
 /* ============================================
    FOOTER
+   + scroll-reveal pop-up
    ============================================ */
 
 .site-footer {
@@ -10,6 +11,19 @@
   font-family: 'Share Tech Mono', 'Montserrat', monospace;
   overflow: hidden;
   border-top: 1px solid rgba(94, 224, 255, 0.15);
+
+  /* ---- reveal — hidden initial state ---- */
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.site-footer--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* faint grid overlay (matches hero) */
@@ -36,7 +50,9 @@
   gap: 3em;
 }
 
-/* ---- Column 1: brand ---- */
+/* ============================================
+   Column 1: brand
+   ============================================ */
 .footer-brand {
   display: flex;
   flex-direction: column;
@@ -74,7 +90,9 @@
   letter-spacing: 0.03em;
 }
 
-/* ---- Column headings ---- */
+/* ============================================
+   Column headings
+   ============================================ */
 .footer-heading {
   font-family: 'Orbitron', 'Montserrat', sans-serif;
   font-weight: 800;
@@ -99,7 +117,9 @@
   box-shadow: 0 0 6px rgba(94, 224, 255, 0.5);
 }
 
-/* ---- Column 2: nav links ---- */
+/* ============================================
+   Column 2: nav links
+   ============================================ */
 .footer-nav ul,
 .footer-connect ul {
   list-style: none;
@@ -144,7 +164,9 @@
   left: -0.2em;
 }
 
-/* ---- Column 3: socials ---- */
+/* ============================================
+   Column 3: socials
+   ============================================ */
 .footer-socials li {
   margin-bottom: 0.7em;
 }
@@ -193,7 +215,9 @@
   box-shadow: 0 0 12px rgba(255, 109, 177, 0.25);
 }
 
-/* ---- Bottom bar ---- */
+/* ============================================
+   Bottom bar
+   ============================================ */
 .footer-bottom {
   position: relative;
   z-index: 1;
@@ -210,6 +234,18 @@
   letter-spacing: 0.08em;
   color: #7f93a8;
   text-transform: uppercase;
+
+  /* start hidden for stagger */
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease 0.6s,
+    transform 0.6s ease 0.6s;
+}
+
+.site-footer--visible .footer-bottom {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .footer-built {
@@ -229,9 +265,39 @@
 }
 
 /* ============================================
-   RESPONSIVE
+   Staggered column reveal
    ============================================ */
+.footer-brand,
+.footer-nav,
+.footer-connect {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
 
+.site-footer--visible .footer-brand {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.site-footer--visible .footer-nav {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.30s;
+}
+
+.site-footer--visible .footer-connect {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
 @media (max-width: 900px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
@@ -257,4 +323,19 @@
   }
   .footer-logo { font-size: 1.5em; }
   .footer-tagline { font-size: 0.85em; }
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .site-footer,
+  .site-footer .footer-brand,
+  .site-footer .footer-nav,
+  .site-footer .footer-connect,
+  .site-footer .footer-bottom {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

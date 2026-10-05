@@ -1,9 +1,24 @@
-/* ---------- INTRO TEXT ---------- */
+/* ============================================
+   INTRO TEXT — reveal on scroll
+   ============================================ */
 .csm-intro {
   max-width: 800px;
   margin: 0 auto;
   padding: 48px 20px 32px;
   text-align: center;
+
+  /* hidden initial state */
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.csm-intro--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .csm-intro p {
@@ -43,11 +58,26 @@
   font-size: 0.85rem;
 }
 
-/* ---------- SLIDER WRAPPER ---------- */
+/* ============================================
+   SLIDER WRAPPER — reveal on scroll
+   ============================================ */
 .csm-slider-section {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 16px 64px;
+
+  /* hidden initial state */
+  opacity: 0;
+  transform: translateY(60px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.csm-slider-section--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .csm-slider-frame {
@@ -109,7 +139,9 @@
   display: block;
 }
 
-/* ---------- PAGINATION ---------- */
+/* ============================================
+   PAGINATION
+   ============================================ */
 .csm-swiper .swiper-pagination {
   bottom: 10px !important;
   z-index: 6;
@@ -129,7 +161,9 @@
   opacity: 1;
 }
 
-/* ---------- FULLSCREEN HINT ---------- */
+/* ============================================
+   FULLSCREEN HINT
+   ============================================ */
 .csm-hint {
   position: absolute;
   bottom: 12px;
@@ -173,7 +207,9 @@
   }
 }
 
-/* ---------- FULLSCREEN STATE ---------- */
+/* ============================================
+   FULLSCREEN STATE
+   ============================================ */
 .csm-slider-frame:fullscreen,
 .csm-slider-frame:-webkit-full-screen {
   border-radius: 0;
@@ -205,4 +241,16 @@
 .csm-slider-frame:fullscreen .csm-hint,
 .csm-slider-frame:-webkit-full-screen .csm-hint {
   display: none;
+}
+
+/* ============================================
+   Reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .csm-intro,
+  .csm-slider-section {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
