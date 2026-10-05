@@ -79,49 +79,60 @@ const csmNotify: FeatureGroup[] = [
   },
 ];
 
-function App() {
+  function App() {
   return (
     <div>
-      <Loader/>
-      <Header />
-      <SectionTitle title="About" />
-      <CsmSlider />
-      <SectionTitle title="Our Packages" />
-      <center>
-        <ProductCard
-          imageSrc="csmlite.jpeg"
-          imageAlt="CSM Lite preview"
-          description="Classroom Student Manager Lite (Rs. 15,000)"
-          featureGroups={csmlite}
-          onBuy={() => openWhatsApp("I would like to buy CSM Lite")}
-          onDemo={() => console.log('Demo clicked')}
-        />
-        <br />
-        <ProductCard
-          imageSrc="csm.png"
-          imageAlt="CSM preview"
-          description="Classroom Student Manager (Rs. 30,000)"
-          featureGroups={csm}
-          specialTitles={['Exam Management Features', 'Assignment Management Features']}
-          onBuy={() => openWhatsApp("I would like to buy CSM")}
-          onDemo={() => console.log('Demo clicked')}
-        />
-        <br />
-        <ProductCard
-          imageSrc="csm_notify.png"
-          imageAlt="CSM Notify preview"
-          description="Classroom Student Manager with SMS Notifications (Rs. 35,000)"
-          featureGroups={csmNotify}
-          specialTitles={['Parent Notifications']}
-          onBuy={() => openWhatsApp("I would like to buy CSM Notify (SMS version)")}
-          onDemo={() => console.log('Demo clicked')}
-        />
-      </center>
-      <br />
-      <br />
-  <Footer/>      
+      <Loader />
+
+      <div id="home">
+        <Header />
+      </div>
+
+      <div id="about">
+        <SectionTitle title="About" />
+        <CsmSlider />
+      </div>
+
+      <div id="packages">
+        <SectionTitle title="Our Packages" />
+        <center>
+          <ProductCard
+            imageSrc="csmlite.jpeg"
+            imageAlt="CSM Lite preview"
+            description="Classroom Student Manager Lite (Rs. 15,000)"
+            featureGroups={csmlite}
+            onBuy={() => openWhatsApp("I would like to buy CSM Lite")}
+            onDemo={() => console.log("Demo clicked")}
+          />
+          <br />
+          <ProductCard
+            imageSrc="csm.png"
+            imageAlt="CSM preview"
+            description="Classroom Student Manager (Rs. 30,000)"
+            featureGroups={csm}
+            specialTitles={["Exam Management Features", "Assignment Management Features"]}
+            onBuy={() => openWhatsApp("I would like to buy CSM")}
+            onDemo={() => console.log("Demo clicked")}
+          />
+          <br />
+          <ProductCard
+            imageSrc="csm_notify.png"
+            imageAlt="CSM Notify preview"
+            description="Classroom Student Manager with SMS Notifications (Rs. 35,000)"
+            featureGroups={csmNotify}
+            specialTitles={["Parent Notifications"]}
+            onBuy={() => openWhatsApp("I would like to buy CSM Notify (SMS version)")}
+            onDemo={() => console.log("Demo clicked")}
+          />
+        </center>
+      </div>
+    <br /><br />
+      <div id="contact">
+        <Footer />
+      </div>
     </div>
-  )
+  );
 }
+
 
 export default App

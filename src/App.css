@@ -19,7 +19,10 @@
 }
 
 /* ---------- optional: make page take full height ---------- */
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body,
 #root {
   height: 100%;
