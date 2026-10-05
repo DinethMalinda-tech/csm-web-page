@@ -1,0 +1,260 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.site-footer {
+  position: relative;
+  width: 100%;
+  background: #0a0e1a;
+  color: #e8f4ff;
+  font-family: 'Share Tech Mono', 'Montserrat', monospace;
+  overflow: hidden;
+  border-top: 1px solid rgba(94, 224, 255, 0.15);
+}
+
+/* faint grid overlay (matches hero) */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(94, 224, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 109, 177, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4em 2em 3em;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3em;
+}
+
+/* ---- Column 1: brand ---- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.footer-logo {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.8em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5ee0ff;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(94, 224, 255, 0.35);
+}
+
+.footer-logo::after {
+  content: '_';
+  color: #ff6db1;
+  text-shadow: 0 0 8px rgba(255, 109, 177, 0.6);
+  animation: footerBlink 1.2s steps(1) infinite;
+}
+
+@keyframes footerBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.footer-tagline {
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: #90a4bd;
+  max-width: 26em;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Column headings ---- */
+.footer-heading {
+  font-family: 'Orbitron', 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.8em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5ee0ff;
+  padding-bottom: 0.9em;
+  margin-bottom: 1.2em;
+  position: relative;
+  text-shadow: 0 0 8px rgba(94, 224, 255, 0.3);
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.5em;
+  height: 1px;
+  background: linear-gradient(90deg, #5ee0ff, #ff6db1);
+  box-shadow: 0 0 6px rgba(94, 224, 255, 0.5);
+}
+
+/* ---- Column 2: nav links ---- */
+.footer-nav ul,
+.footer-connect ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.7em;
+}
+
+.footer-links a {
+  color: #c9d9e8;
+  text-decoration: none;
+  font-size: 0.9em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.footer-links a::before {
+  content: '›';
+  position: absolute;
+  left: -1em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5ee0ff;
+  opacity: 0;
+  transition: opacity 0.25s ease, left 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #5ee0ff;
+  padding-left: 1em;
+}
+
+.footer-links a:hover::before {
+  opacity: 1;
+  left: -0.2em;
+}
+
+/* ---- Column 3: socials ---- */
+.footer-socials li {
+  margin-bottom: 0.7em;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  color: #c9d9e8;
+  text-decoration: none;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35em 0.6em;
+  border: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease,
+              background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-socials a svg {
+  transition: color 0.25s ease;
+}
+
+.footer-socials a:hover {
+  color: #ffffff;
+  background: rgba(94, 224, 255, 0.06);
+  border-color: rgba(94, 224, 255, 0.4);
+  box-shadow: 0 0 12px rgba(94, 224, 255, 0.15);
+}
+
+/* brand accents on hover */
+.footer-socials a[href*="wa.me"]:hover,
+.footer-socials a[aria-label="WhatsApp"]:hover {
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.6);
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.25);
+}
+.footer-socials a[aria-label="LinkedIn"]:hover {
+  color: #4aa3ff;
+  border-color: rgba(74, 163, 255, 0.6);
+  box-shadow: 0 0 12px rgba(74, 163, 255, 0.25);
+}
+.footer-socials a[aria-label="GitHub"]:hover {
+  color: #ff8ec2;
+  border-color: rgba(255, 109, 177, 0.6);
+  box-shadow: 0 0 12px rgba(255, 109, 177, 0.25);
+}
+
+/* ---- Bottom bar ---- */
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(94, 224, 255, 0.12);
+  padding: 1.4em 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+  font-size: 0.78em;
+  letter-spacing: 0.08em;
+  color: #7f93a8;
+  text-transform: uppercase;
+}
+
+.footer-built {
+  color: #7f93a8;
+}
+
+.footer-heart {
+  color: #ff6db1;
+  text-shadow: 0 0 8px rgba(255, 109, 177, 0.6);
+  animation: footerBeat 1.6s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes footerBeat {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.2); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5em;
+    padding: 3.5em 1.5em 2.5em;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2em;
+    padding: 3em 1.2em 2em;
+  }
+  .footer-bottom {
+    padding: 1.2em 1.2em;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.7em;
+  }
+  .footer-logo { font-size: 1.5em; }
+  .footer-tagline { font-size: 0.85em; }
+}

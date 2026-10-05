@@ -4,6 +4,7 @@ import SectionTitle from './SectionTitle'
 import ProductCard from './ProductCard'
 import type { FeatureGroup } from './ProductCard'
 import CsmSlider from './CsmSlider'
+import Footer from './Footer'
 import { openWhatsApp } from "./utils/whatsapp"
 
 const csmlite: FeatureGroup[] = [
@@ -114,6 +115,9 @@ function App() {
           onDemo={() => console.log('Demo clicked')}
         />
       </center>
+      <br />
+      <br />
+  <Footer/>      
     </div>
   )
 }

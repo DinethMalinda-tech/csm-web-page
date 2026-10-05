@@ -1,5 +1,5 @@
-import "./Header.css"
-import { buildWhatsAppLink } from "./utils/whatsapp"
+import "./Header.css";
+import { buildWhatsAppLink } from "./utils/whatsapp";
 
 function Header() {
   const whatsappLink = buildWhatsAppLink("I would like to Know about CSM Packages");
@@ -27,11 +27,7 @@ function Header() {
             <h2>Affordable software to manage your class</h2>
             <div className="hero-line"></div>
             <div className="hero-cta">
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                 Contact Us
               </a>
             </div>

@@ -197,18 +197,85 @@ body {
   text-align: center;
 }
 
+/* ============================================
+   GRID — nearly invisible base + single-cell
+   border pulse with soft inner glow
+   ============================================ */
 .hero-content::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(94, 224, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 109, 177, 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
+
+  background-image:
+    /* soft inner radial glow */
+    radial-gradient(ellipse 50% 50% at 50% 50%,
+      rgba(94, 224, 255, 0.45) 0%,
+      rgba(94, 224, 255, 0.08) 60%,
+      transparent 100%),
+    /* top edge */
+    linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
+    /* bottom edge */
+    linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
+    /* left edge */
+    linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
+    /* right edge */
+    linear-gradient(rgba(94, 224, 255, 1), rgba(94, 224, 255, 1)),
+    /* base grid — nearly invisible */
+    linear-gradient(rgba(94, 224, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 109, 177, 0.05) 1px, transparent 1px);
+
+  background-size:
+    60px 60px,   /* glow */
+    60px 2px,    /* top edge — 2px thick */
+    60px 2px,    /* bottom edge */
+    2px 60px,    /* left edge */
+    2px 60px,    /* right edge */
+    60px 60px,   /* base grid H */
+    60px 60px;   /* base grid V */
+
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat,
+    repeat;
+
+  animation: heroSpot 8s ease-in-out infinite;
 }
 
+@keyframes heroSpot {
+  /* ---- Cell 1 — near top-left ---- */
+  0%    { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 0;   }
+  6%    { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 1;   }
+  12%   { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 0.6; }
+  18%   { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 0;   }
+
+  /* ---- Cell 2 — centre-right ---- */
+  25%   { background-position: 360px 180px, 360px 179px, 360px 240px, 360px 180px, 420px 180px, 0 0, 0 0; opacity: 0;   }
+  31%   { background-position: 360px 180px, 360px 179px, 360px 240px, 360px 180px, 420px 180px, 0 0, 0 0; opacity: 1;   }
+  37%   { background-position: 360px 180px, 360px 179px, 360px 240px, 360px 180px, 420px 180px, 0 0, 0 0; opacity: 0.6; }
+  43%   { background-position: 360px 180px, 360px 179px, 360px 240px, 360px 180px, 420px 180px, 0 0, 0 0; opacity: 0;   }
+
+  /* ---- Cell 3 — bottom-left ---- */
+  50%   { background-position: 60px 300px,  60px 299px,  60px 360px,  60px 300px,  120px 300px, 0 0, 0 0; opacity: 0;   }
+  56%   { background-position: 60px 300px,  60px 299px,  60px 360px,  60px 300px,  120px 300px, 0 0, 0 0; opacity: 1;   }
+  62%   { background-position: 60px 300px,  60px 299px,  60px 360px,  60px 300px,  120px 300px, 0 0, 0 0; opacity: 0.6; }
+  68%   { background-position: 60px 300px,  60px 299px,  60px 360px,  60px 300px,  120px 300px, 0 0, 0 0; opacity: 0;   }
+
+  /* ---- Cell 4 — top-right ---- */
+  75%   { background-position: 480px 120px, 480px 119px, 480px 180px, 480px 120px, 540px 120px, 0 0, 0 0; opacity: 0;   }
+  81%   { background-position: 480px 120px, 480px 119px, 480px 180px, 480px 120px, 540px 120px, 0 0, 0 0; opacity: 1;   }
+  87%   { background-position: 480px 120px, 480px 119px, 480px 180px, 480px 120px, 540px 120px, 0 0, 0 0; opacity: 0.6; }
+  93%   { background-position: 480px 120px, 480px 119px, 480px 180px, 480px 120px, 540px 120px, 0 0, 0 0; opacity: 0;   }
+
+  100%  { background-position: 120px 120px, 120px 119px, 120px 180px, 120px 120px, 180px 120px, 0 0, 0 0; opacity: 0;   }
+}
+
+/* ---- keep content above grid ---- */
 .hero-content > * {
   position: relative;
   z-index: 2;
