@@ -92,6 +92,9 @@ export default function CsmSlider() {
   return (
     <>
       <section className="csm-intro">
+          <span className="csm-tagline">
+          Made for teachers. Priced for teachers.
+        </span>
         <p>
           CSM is a simple, offline app built for teachers who run their
           classroom on their own — with nothing but a phone. It handles your
@@ -101,9 +104,7 @@ export default function CsmSlider() {
           No computers. No internet. No subscriptions. Just one small payment,
           and it's yours for life.
         </p>
-        <span className="csm-tagline">
-          Made for teachers. Priced for teachers.
-        </span>
+      
       </section>
 
       <section className="csm-slider-section">
